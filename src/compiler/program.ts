@@ -1200,6 +1200,10 @@ export function getReferencedFileLocation(program: Program, ref: ReferencedFile)
     const file = Debug.checkDefined(program.getSourceFileByPath(ref.file));
     const { kind, index } = ref;
     let pos: number | undefined, end: number | undefined, packageId: PackageId | undefined;
+    
+    console.log({ kind, index, file, referencedFiles: file.referencedFiles.length });
+
+    
     switch (kind) {
         case FileIncludeKind.Import:
             const importLiteral = getModuleNameStringLiteralAt(file, index);
